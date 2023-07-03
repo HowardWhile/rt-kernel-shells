@@ -1,11 +1,14 @@
 #!/bin/bash
 
+#還原 
+sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/' /etc/default/grub 
+
 # 宣告各個參數
 power_management_params=(
-  "cpuidle.off=1"
   "intel_idle.max_cstate=0"
+  "processor.max_cstate=1"
+  # "cpuidle.off=1"
   # "cpufreq.off=1"
-  "processor.max_cstate=0"
   # "processor_idle.max_cstate=0"
   # "intel_pstate=disable"
   # "rcupdate.rcu_cpu_stall_suppress=1"
@@ -14,7 +17,7 @@ power_management_params=(
 
 core_isolation_params=(
   # "nohz_full=3"
-  # "isolcpus=3"
+  "isolcpus=3"
   # "rcu_nocbs=3"
   # "irqaffinity=0"
 )
